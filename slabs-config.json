@@ -1,0 +1,16 @@
+{
+  "name": "URL Trawler",
+  "description": "Find web pages on a domain",
+  "type": "source",
+  "connectionsIn": 1,
+  "connectionsOut": -1,
+  "customIcon": "fa-sitemap",
+  "hasSettings": true,
+  "defaultSettings": {
+    "url": "http://www.slabs.io"
+  },
+  "source": {
+    "label": "Core Slab",
+    "url": "http://slabs.io/"
+  }
+}
