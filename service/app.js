@@ -1,15 +1,12 @@
 var req = require('./req.js');
 var Q = require('q');
 
-function getURLs(settings, data){
+function getURLs(settings){
     var deferred = Q.defer();
     
     req(settings.url, settings.domain).then(function(results){
         
         var newJobs = results
-                .filter(function(url){
-                    return data.indexOf(url) < 0;
-                })
                 .map(function(url){
                    return {
                        msg: 'job',
