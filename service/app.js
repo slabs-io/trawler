@@ -16,6 +16,11 @@ function getURLs(settings){
            };
         });
         
+        newJobs.push({
+            msg: 'save',
+            data: settings.url
+        });
+        
         deferred.resolve(newJobs);
     }).catch(function(err){
         deferred.reject(err);
