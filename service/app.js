@@ -45,10 +45,10 @@ function getDomain(url){
 
 
 exports.start =  function(settings){
-  var domain = getDomain(settings.url);
+//   var domain = getDomain(settings.url);
   return getURLs({
       url: settings.url,
-      domain: domain
+      domain: settings.domain
   });
 };
 
