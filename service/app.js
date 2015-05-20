@@ -18,7 +18,7 @@ function getURLs(settings){
                    };
                 });
         
-        newJobs.push({
+        newJobs.unshift({
             msg: 'save',
             data: settings.url
         });
