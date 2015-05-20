@@ -1,43 +1,26 @@
-var trawler = require('./trawler.js');
+var request = require('request');
 var Q = require('q');
-var mongoose = require('mongoose');
-var SlabConfigSetting = mongoose.model('SlabConfigSetting');
 
 
-// start process
-exports.start = function(config){
+exports.getData = function(settings){
     var deferred = Q.defer();
     
-    // clear db
+    if(!settings.settingId){
+        deferred.resolve([]);
+        return;
+    }
     
-    trawler.beginTrawl({
-        url: config.url
-    }).progress(function(item){
+    request({
+        method: 'GET',
+        url: 'http://services.slabs.io/slab/trawler/' + settings.settingId
+    }, function(err, response, body){
+        if(err){
+            deferred.reject(err);
+            return;
+        }
         
-        // var saveObject = {
-        //     network_id:config.networkId,
-        //     slab_guid:config.slabConfigId,
-        //     setting:{
-        //          data : [ ] 
-        //          running: true
-        //      }
-        // };
-        
-        // new SlabConfigSetting(saveObject).save();
-    }).then(function(){
-       // running false 
+        deferred.resolve(body);
     });
     
     return deferred.promise;
-};
-
-// stop process
-exports.stop = function(config){
-    
-};
-
-
-// get status of process
-exports.getData = function(){
-    
 };
